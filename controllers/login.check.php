@@ -9,7 +9,7 @@ if (isset($_SESSION['login'])) { // user already logged in
     redirect('logout');
 } 
 elseif (isset($_POST['username'], $_POST['password'])) {
-    // maybe query the database
+    // query the database
     $user = $queryBuilder->findFirstByField('users', 'username', $_POST['username'], 'App\Model\Users');
 
     // Verification of user username and password
@@ -25,6 +25,6 @@ elseif (isset($_POST['username'], $_POST['password'])) {
         redirect('login'); // redirect to login again...
     }
 } else {
-    echo 'error';
+    echo 'Login error';
 }
 ?>

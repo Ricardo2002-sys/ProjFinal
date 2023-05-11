@@ -12,7 +12,7 @@
 
 <body>
   <div class="container-fluid">
-    <h1>cameras</h1>
+    <h1>Cameras</h1>
     <a class="btn btn-dark" href="<?php echo route('camera/create'); ?>" role="button">Inserir</a>
     <ul class="list-group mt-4">
       <?php

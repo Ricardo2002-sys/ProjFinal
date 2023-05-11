@@ -13,7 +13,7 @@
 <body>
   <div class="container-fluid">
     <h1>Lens</h1>
-    <a class="btn btn-dark" href="<?php echo route('lens/create'); ?>" role="button">Inserir</a>
+    <a class="btn btn-dark" href="<?php echo route('lens/create'); ?>" role="button">Insert</a>
     <ul class="list-group mt-4">
       <?php
       foreach ($lenses as $lens) {

@@ -13,6 +13,7 @@
 <body>
   <div class="container-fluid">
     <h1>Your Photos</h1>
+    <a class="btn btn-dark" href="<?php echo route('photos/create'); ?>" role="button">Insert</a>
     <ul class="list-group mt-4">
       <?php
       // Verification of photos ownership

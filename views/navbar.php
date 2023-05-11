@@ -12,136 +12,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Share a pic</title>
     <link rel="icon" href="logo.png">
-    <style>
-        body .bbbootstrap {
-            background-image: url(https://res.cloudinary.com/dxfq3iotg/image/upload/v1566917764/Add_a_heading.png) !important;
-            background-size: cover;
-            padding: 180px 0 30px 0;
-        }
-
-        .bbbootstrap {
-            padding: 40px;
-            margin-bottom: 22px;
-            color: #fff;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-            background-color: #2e9df7;
-            -webkit-box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.25) inset, 0 -15px 15px -15px rgba(0, 0, 0, 0.25) inset;
-            box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.25) inset, 0 -15px 15px -15px rgba(0, 0, 0, 0.25) inset;
-        }
-
-        .bbbootstrap form {
-            position: relative;
-            width: 540px;
-            margin: 22px auto 0;
-        }
-
-        span {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            outline: 0;
-            font-weight: inherit;
-            font-style: inherit;
-            font-size: 100%;
-            font-family: inherit;
-            vertical-align: baseline;
-        }
-
-
-        .bbbootstrap form input[type="text"] {
-            padding: 15px 20px;
-            padding-right: 100px;
-            border-color: transparent;
-            border-radius: 4px;
-        }
-
-        input.InputBox {
-            font-family: "lucida grande", "Lucida Sans Unicode", tahoma, sans-serif;
-            color: #333;
-            font-size: 15px;
-            padding: 3px;
-            margin: 0;
-            width: 250px;
-            background: #fff;
-            border: 1px solid #999;
-            border: 1px solid rgba(0, 0, 0, 0.4);
-        }
-
-
-        input[type=text] {
-            box-sizing: border-box;
-        }
-
-        .InputBox {
-            display: block;
-            width: 100% !important;
-            padding: 6px 12px;
-            font-size: 15px;
-            line-height: 22px;
-            border-radius: 4px;
-        }
-
-        .bbbootstrap form input[type="submit"] {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            float: right;
-            padding: 10px 25px;
-        }
-
-        body .Button,
-        body .button {
-            background-color: #1268b3;
-            background-image: none;
-        }
-
-
-        input[type="submit"] {
-            -webkit-appearance: button;
-            cursor: pointer;
-        }
-
-        .Button,
-        .Button:hover,
-        .Button:focus,
-        .Button:active {
-            text-shadow: none;
-            border-color: transparent;
-        }
-
-        .Button {
-            display: inline-block;
-            padding: 6px 12px;
-            vertical-align: middle;
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 22px;
-            text-transform: uppercase;
-            border: transparent solid 1px;
-            border-radius: 3px;
-            -webkit-transition: -webkit-box-shadow 50ms;
-            transition: -webkit-box-shadow 50ms;
-            -o-transition: box-shadow 50ms;
-            transition: box-shadow 50ms;
-            transition: box-shadow 50ms, -webkit-box-shadow 50ms;
-            -webkit-font-smoothing: inherit;
-            color: #fff;
-            background-color: #2e9df7;
-            background-repeat: repeat-x;
-            background-color: #38a2f7;
-            background-image: -webkit-linear-gradient(#38a2f7, #2498f7);
-            background-image: -webkit-gradient(linear, left top, left bottom, from(#38a2f7), to(#2498f7));
-            background-image: -o-linear-gradient(#38a2f7, #2498f7);
-            background-image: linear-gradient(#38a2f7, #2498f7);
-        }
-    </style>
 </head>
 
 <body>
     <!-- Header / Nav-->
     <header>
         <!-- Nav -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <a class="navbar-brand ms-2 " href="<?php echo route('home'); ?>">
                 <i class="fa fa-camera"></i>
                 <span class="navbar-text">Pic a day
@@ -153,9 +30,21 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapseExample">
-                <!-- Admin -->
+
+                <!-- Search bar -->
+                <form method="post" action="<?php echo route('home') ?>">
+                    <div class="mx-auto input-group">
+                        <div class="form-outline">
+                            <input type="search" placeholder="Search photos" name='search' class="bg-secundary form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-warning">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
                 <?php
                 if (isset($_SESSION['login'])) {
+                    // Admin 
                     if ($_SESSION['role_id'] == '2') {
                         ?>
                         <ul class="navbar-nav ms-auto">
@@ -175,9 +64,9 @@
                                 <a class="nav-link" href="<?php echo route('photos'); ?>">Photos</a>
                             </li>
                         </ul>
-                        <!-- User -->
                         <?php
-                    } elseif ($_SESSION['role_id'] == '1') {
+                    } // User
+                    elseif ($_SESSION['role_id'] == '1') {
                         ?>
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
@@ -190,6 +79,7 @@
                         <?php
                     }
                 }
+                // Logged in
                 if (isset($_SESSION['login'])) {
                     ?>
                     <ul class="navbar-nav ms-auto mx-3">
@@ -210,9 +100,8 @@
                     <ul class="navbar-nav ms-auto mx-3">
                         <li class="nav-item">
                             <!-- Button triggering login modal -->
-                            <a class="nav-link" href="<?php echo route('login'); ?>">Login</a>
-                            <!-- <a class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#login">Login</a>
-                            </a> -->
+                            <a class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#login">Login</a>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <!-- Button triggering registration -->
@@ -264,6 +153,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
+
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
 
                     </div>

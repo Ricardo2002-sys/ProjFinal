@@ -12,7 +12,7 @@
 
 <body>
   <div class="container-fluid">
-    <h1>Insert a Photo</h1>
+    <h1>Add a Photo</h1>
     <form enctype="multipart/form-data" method="POST" action="<?php echo route('photos/store'); ?>">
       <div class="form-group">
         <input type="file" class="file-upload" name="file" required>

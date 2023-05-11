@@ -74,4 +74,9 @@ class QueryBuilder
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, $class);
     }
+    public function search($table,$columnName,$searchTerm, $class = "StdClass"){
+        $stmt = $this->pdo->prepare("SELECT * FROM $table WHERE $columnName LIKE :searchTerm");
+        $stmt->execute(['searchTerm' => "%$searchTerm%"]);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, $class);
+    }
 }

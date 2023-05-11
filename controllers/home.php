@@ -10,12 +10,20 @@ $queryBuilder = new QueryBuilder($connection);
 
 $photos = $queryBuilder->getAll('photo', 'App\Model\Photo');
 
+// Searching
+if (isset($_POST['search'])) {
+    $value = $_POST['search'];
+    $photos = $queryBuilder->search('photo', 'name', $value, 'App\Model\Photo');
+    
+}
+
+// Ordering
 if (isset($_POST['parameter'])) {
     $parameter = $_POST['parameter'];
     $dir = $_POST['dir'];
     $dirs = ['ASC', 'DESC'];
     $parameters = ['name', 'date'];
-    if (!in_array($dir,$dirs)){
+    if (!in_array($dir, $dirs)) {
         $dir = 'ASC';
     }
     // Order Photos
@@ -30,6 +38,5 @@ foreach ($photos as $photo) {
     $photo->camera = $queryBuilder->findById('camera', $photo->camera_id, 'App\Model\Camera');
     $photo->lens = $queryBuilder->findById('lens', $photo->lens_id, 'App\Model\Lens');
 }
-
 
 require 'views/home.view.php';

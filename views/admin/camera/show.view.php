@@ -30,7 +30,7 @@
       </p>
       <?php
       foreach ($photos as $photo) {
-        if ($camera->id == $photo->camera_id | $_SESSION['role_id'] == '2') { ?>
+        if ($camera->id == $photo->camera_id) { ?>
           <div class="d-lg-inline-block" style="width:310px">
             <a href="<?php echo route('photos/' . $photo->id) ?>">
               <img class="rounded mx-auto d-block" style="max-width:300px;max-height:400px"

@@ -10,48 +10,62 @@
     <title>Home</title>
 </head>
 <?php include 'navbar.php' ?>
+
 <body>
-    <main class="container-fluid">
+    <main>
         <!-- Photos Ordenation -->
-        <div class="row">
-            <div class="col">
-                <form method="post" action="<?php route('home');?>">
-                    <select name="parameter" id="parameter">
-                        <option value=""></option>
-                        <option value="name">Name</option>
-                        <option value="date">Date</option>
-                    </select>
-                    <select name="dir" id="dir">
-                        <option value=""></option>
-                        <option value="ASC">Ascendente</i></option>
-                        <option value="DESC">Descendente</option>
-                    </select>
-                    <button type="submit">btn</button>
-                </form>
-            </div>
-            <!-- Shows all photos -->
-            <?php foreach($photos as $photo) {
-                ?>
-                <div class="col d-sm-inline-block" style="">
-                    <a href="<?php echo route('photos/' . $photo->id) ?>">
-                        <img class="rounded mx-auto d-block" style="max-width:400px;max-height:500px"
-                            src="<?php echo route($photo->path) ?>">
-                        <div>
-                            <div>
-                                <div class="" style="font-size:1.6em;">
-                                    <span style="text-align:center;">
-                                        <?php echo $photo->name ?> by <a
-                                            href="<?php echo route('users/' . $photo->users_id); ?>"><?php echo $photo->user->name ?></a>
-                                    </span>
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-12 my-3">
+                    <form method="post" action="<?php route('home'); ?>">
+                        <select name="parameter" id="parameter">
+                            <option value=""></option>
+                            <option value="name">Name</option>
+                            <option value="date">Date</option>
+                        </select>
+                        <select name="dir" id="dir">
+                            <option value=""></option>
+                            <option value="ASC">Ascendente</i></option>
+                            <option value="DESC">Descendente</option>
+                        </select>
+                        <button type="submit">btn</button>
+                    </form>
+                </div>
+                <!-- Shows all photos -->
+                <?php foreach ($photos as $photo) {
+                    ?>
+                    <div class="col-sm d-sm-inline-block" style="">
+                        <a href="<?php echo route('photos/' . $photo->id) ?>">
+                            <img class="rounded mx-auto d-block" style="max-width:400px;max-height:500px"
+                                src="<?php echo route($photo->path) ?>">
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <div class="d-flex justify-content-center" style="font-size:1.6em;">
+                                        <span>
+                                            <?php echo $photo->name ?> by <a
+                                                href="<?php echo route('users/' . $photo->users_id); ?>"><?php echo $photo->user->name ?></a>
+                                        </span>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="<?php echo route('camera/' . $photo->camera->id); ?>">
+                                            <span class="lead">
+                                                <?php echo $photo->camera->brand, " ", $photo->camera->model; ?>
+                                            </span>
+                                            <a>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="<?php echo route('lens/' . $photo->lens->id); ?>">
+                                            <p class="lead">
+                                                <?php echo $photo->lens->brand, " ", $photo->lens->focal_lenght, " ", $photo->lens->aperture; ?>
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                            <p class="lead">
-                                <?php echo $photo->camera->brand, " ", $photo->camera->model; ?>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            <?php } ?>
+                        </a>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
     </main>
 </body>

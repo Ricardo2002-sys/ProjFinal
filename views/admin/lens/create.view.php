@@ -12,7 +12,7 @@
 
 <body>
   <div class="container-fluid">
-    <h1>Create</h1>
+    <h1>Create Lens</h1>
     <form enctype="multipart/form-data" method="POST" action="<?php echo route('lens/store'); ?>">
       <div class="form-group">
         <input type="text" class="form-control" name="brand" placeholder="Insert lens´s brand" maxlength="100" required>
