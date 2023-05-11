@@ -12,7 +12,9 @@
 	<title>Photos</title>
 	<link rel="icon" href="..\Icons\castle.svg">
 </head>
-<!-- <footer class="ms-4 mx-5">
-	<hr>
-	<p> Developed by Ricardo Pimenta</p>
-</footer> -->
+<footer class="footer ms-4 mx-5">
+	<div class="my-auto" >
+		<hr>
+		<p> Developed by Ricardo Pimenta</p>
+	</div>
+</footer>

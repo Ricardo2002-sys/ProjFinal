@@ -9,7 +9,9 @@ if (isset($_SESSION['login']) && (($_SESSION['role_id'] == '1') | ($_SESSION['ro
     $queryBuilder = new QueryBuilder($connection);
 
     $photos = $queryBuilder->getAll('photo', 'App\Model\Photo');
-    
+
+
+
     // Searching
     if (isset($_POST['search'])) {
         $value = $_POST['search'];
@@ -32,7 +34,7 @@ if (isset($_SESSION['login']) && (($_SESSION['role_id'] == '1') | ($_SESSION['ro
         $parameter = $_POST['parameter'];
         $dir = $_POST['dir'];
         $dirs = ['ASC', 'DESC'];
-        $parameters = ['name', 'date','aperture','iso','shutter_speed'];
+        $parameters = ['name', 'date', 'aperture', 'iso', 'shutter_speed', 'camera_id', 'lens_id', 'user_id'];
         if (!in_array($dir, $dirs)) {
             $dir = 'ASC';
         }
@@ -46,6 +48,9 @@ if (isset($_SESSION['login']) && (($_SESSION['role_id'] == '1') | ($_SESSION['ro
     foreach ($photos as $photo) {
         $photo->camera = $queryBuilder->findById('camera', $photo->camera_id, 'App\Model\Camera');
         $photo->lens = $queryBuilder->findById('lens', $photo->lens_id, 'App\Model\Lens');
+        if ($_SESSION['role_id'] == '2') {
+            $photo->user = $queryBuilder->findById('users', $photo->users_id, 'App\Model\Users');
+        }
     }
 
     require 'views/photos/index.view.php';

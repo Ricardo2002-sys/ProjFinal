@@ -35,7 +35,8 @@
                 <form method="post" action="<?php echo route('home') ?>">
                     <div class="mx-auto input-group">
                         <div class="form-outline">
-                            <input type="search" placeholder="Search photos" name='search' class="bg-secundary form-control" style="border: 1.5px solid pink;"/>
+                            <input type="search" placeholder="Search photos" name='search'
+                                class="bg-secundary form-control" style="border: 1.5px solid pink;" />
                         </div>
                         <button type="submit" class="btn btn-warning">
                             <i class="fa fa-search"></i>
@@ -117,14 +118,14 @@
         <div class="modal fade" id="login" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="bg-secundary modal-header">
                         <h1 class="modal-title fs-5" id="examplemodallabel">
                             Login
                         </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <div class="modal-body">
-                        <form action="<?php echo route('login/check') ?>" method="post">
+                    <form action="<?php echo route('login/check') ?>" method="post">
+                        <div class="modal-body">
                             <table class="table table-borderless">
                                 <tr>
                                     <td>
@@ -148,15 +149,15 @@
                                             minlength="6" maxlength="15" required>
                                     </td>
                                 </tr>
-                                <input type="submit" value="Login">
+
                             </table>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
+                        </div>
+                        <div class="modal-footer">
+                            <input class="btn btn-warning" type="submit" value="Login">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
 
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
