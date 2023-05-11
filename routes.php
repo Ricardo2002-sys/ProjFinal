@@ -34,6 +34,9 @@ $router->post('photos/store', function () {
 $router->get('photos', function () {
     require 'controllers/photos/index.php';
 });
+$router->post('photos', function () {
+    require 'controllers/photos/index.php';
+});
 
 /* show photo with id */
 $router->get('photos/(\d+)', function ($id) {
