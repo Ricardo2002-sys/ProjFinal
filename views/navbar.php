@@ -35,7 +35,7 @@
                 <form method="post" action="<?php echo route('home') ?>">
                     <div class="mx-auto input-group">
                         <div class="form-outline">
-                            <input type="search" placeholder="Search photos" name='search' class="bg-secundary form-control" />
+                            <input type="search" placeholder="Search photos" name='search' class="bg-secundary form-control" style="border: 1.5px solid pink;"/>
                         </div>
                         <button type="submit" class="btn btn-warning">
                             <i class="fa fa-search"></i>

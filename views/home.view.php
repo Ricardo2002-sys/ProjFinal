@@ -16,20 +16,79 @@
         <!-- Photos Ordenation -->
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col-12 my-3">
-                    <form method="post" action="<?php route('home'); ?>">
-                        <select name="parameter" id="parameter">
-                            <option value=""></option>
-                            <option value="name">Name</option>
-                            <option value="date">Date</option>
-                        </select>
-                        <select name="dir" id="dir">
-                            <option value=""></option>
-                            <option value="ASC">Ascendente</i></option>
-                            <option value="DESC">Descendente</option>
-                        </select>
-                        <button type="submit">btn</button>
-                    </form>
+                <div class="row">
+                    <div class="col-3 my-3">
+                        <form method="post" action="<?php route('home'); ?>">
+                            <label for="parameter">Order by:</label>
+                            <select class="form-select" name="parameter" id="parameter">
+                                <option value="name">Name</option>
+                                <option value="date">Date</option>
+                            </select>
+                            <select class="form-select" name="dir" id="dir">
+                                <option value="ASC">Ascendente</i></option>
+                                <option value="DESC">Descendente</option>
+                            </select>
+                            <button class="btn btn-warning" type="submit">btn</button>
+                        </form>
+                    </div>
+                    <!-- Filter -->
+                    <!-- Cameras -->
+                    <div class="col-3 my-3">
+                        <form method="post" action="<?php route('home'); ?>">
+                            <label for="camera">Cameras</label>
+                            <select class="form-select" name="camera" id="camera">
+                                <option value="">Show all</option>
+                                <?php
+                                foreach ($cameras as $camera) {
+                                    ?>
+                                    <option value="<?php echo $camera->id ?>"><?php echo $camera->brand, " ", $camera->model ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <button class="btn btn-warning" type="submit">btn</button>
+                        </form>
+                    </div>
+                    <!-- Lens -->
+                    <div class="col-3 my-3">
+                        <form method="post" action="<?php route('home'); ?>">
+                            <label for="lens">Lenses</label>
+                            <select class="form-select" name="lens" id="lens">
+                                <option value="">Show all</option>
+                                <?php
+                                foreach ($lenses as $lens) {
+                                    ?>
+                                    <option value="<?php echo $lens->id ?>"><?php echo $lens->brand, " ", $lens->focal_lenght; ?>
+                                    </option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <button class="btn btn-warning" type="submit">btn</button>
+                        </form>
+                    </div>
+                    <!-- Users -->
+                    <div class="col-3 my-3">
+                        <form method="post" action="<?php route('home'); ?>">
+                            <label for="lens">Users</label>
+                            <select class="form-select" name="user" id="user">
+                                <option value="">Show all</option>
+                                <?php
+                                foreach ($users as $user) {
+                                    if ($user->role_id == '2') {
+                                        continue;
+                                    } else {
+                                        ?>
+                                        <option value="<?php echo $user->id ?>"><?php echo $user->name; ?>
+                                        </option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <button class="btn btn-warning" type="submit">btn</button>
+                        </form>
+                    </div>
                 </div>
                 <!-- Shows all photos -->
                 <?php foreach ($photos as $photo) {

@@ -13,8 +13,23 @@ $photos = $queryBuilder->getAll('photo', 'App\Model\Photo');
 // Searching
 if (isset($_POST['search'])) {
     $value = $_POST['search'];
-    $photos = $queryBuilder->search('photo', 'name', $value, 'App\Model\Photo');
-    
+    $photos = $queryBuilder->search('photo', 'name', $value, 'App\Model\Photo');  
+}
+//Filter
+$cameras = $queryBuilder->getAll('camera','App\Model\Camera');
+$lenses = $queryBuilder->getAll('lens','App\Model\Lens');
+$users = $queryBuilder->getAll('users','App\Model\Users');
+if (isset($_POST['camera'])) {
+    $field = $_POST['camera'];
+    $photos = $queryBuilder->findByField('photo','camera_id',$field,'App\Model\Photo');
+}
+if (isset($_POST['lens'])) {
+    $field = $_POST['lens'];
+    $photos = $queryBuilder->findByField('photo','lens_id',$field,'App\Model\Lens');
+}
+if (isset($_POST['user'])) {
+    $field = $_POST['user'];
+    $photos = $queryBuilder->findByField('photo','users_id',$field,'App\Model\Users');
 }
 
 // Ordering

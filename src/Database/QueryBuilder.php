@@ -79,4 +79,9 @@ class QueryBuilder
         $stmt->execute(['searchTerm' => "%$searchTerm%"]);
         return $stmt->fetchAll(PDO::FETCH_CLASS, $class);
     }
+    public function selectdistinct($table,$field, $class = "StdClass"){
+        $stmt = $this->pdo->prepare("SELECT DISTINCT $field FROM $table;");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, $class);
+    }
 }
