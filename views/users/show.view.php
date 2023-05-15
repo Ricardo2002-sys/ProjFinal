@@ -37,11 +37,13 @@
               </p>
               <?php
               if ($_SESSION['id'] == $user->id) {
+                if ($_SESSION['role_id'] == '1') { ?>
+                  <form class="m-1 form-inline float-left" method="POST" action="<?php echo route('users/' . $user->id); ?>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                <?php }
                 ?>
-                <form class="m-1 form-inline float-left" method="POST" action="<?php echo route('users/' . $user->id); ?>">
-                  <input type="hidden" name="_method" value="DELETE">
-                  <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
                 <a class="m-1 btn btn-warning float-left" href="<?php echo route('users/' . $user->id . '/edit'); ?>"
                   role="button">Edit</a>
                 <?php

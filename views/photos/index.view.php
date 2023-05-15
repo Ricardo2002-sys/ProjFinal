@@ -22,7 +22,7 @@
     <div class="container-fluid">
       <div class="row align-items-center">
         <div class="row">
-          <div class="col-3 my-3">
+          <div class="col-4 my-3">
             <form method="post" action="<?php route('photos'); ?>">
               <label for="parameter">Order by:</label>
               <select class="form-select" name="parameter" id="parameter">
@@ -45,7 +45,7 @@
           </div>
           <!-- Filter -->
           <!-- Cameras -->
-          <div class="col-3 my-3">
+          <div class="col-4 my-3">
             <form method="post" action="<?php route('photos'); ?>">
               <label for="camera">Cameras</label>
               <select class="form-select" name="camera" id="camera">
@@ -62,7 +62,7 @@
             </form>
           </div>
           <!-- Lens -->
-          <div class="col-3 my-3">
+          <div class="col-4 my-3">
             <form method="post" action="<?php route('photos'); ?>">
               <label for="lens">Lenses</label>
               <select class="form-select" name="lens" id="lens">
@@ -119,11 +119,6 @@
                       <span>
                         <?php echo $photo->name ?>
                       </span>
-                      <form class="m-1 form-inline float-right" method="POST"
-                        action="<?php echo route('photos/' . $photo->id); ?>">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                      </form>
                     </div>
                     <?php if ($_SESSION['role_id'] == '2') {
                       ?>
@@ -133,6 +128,11 @@
                             <?php echo $photo->user->name; ?>
                           </span>
                           <a>
+                            <form class="m-1 form-inline float-right" method="POST"
+                              action="<?php echo route('photos/' . $photo->id); ?>">
+                              <input type="hidden" name="_method" value="DELETE">
+                              <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                       </div>
 
                       <?php
